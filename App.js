@@ -13,11 +13,16 @@ const Height=Dimensions.get('window').height
 const Width=Dimensions.get('window').width
 function App() {
   const [isVisible,setIsVisible]=useState(false)
-  const [drawcolor,setDrawColor]=useState('red')
+  const [drawcolor,setDrawColor]=useState()
   const canvasRef = useRef();
   const penColor=['white','black','red','darkred','blue','lightblue','green','darkgreen','yellow','pink','orange','purple','gray','brown']
   
+useState(()=>{
+  setDrawColor('black')
+},[])
+const checkImage=(val)=>{
 
+}
   const ColorPicker=()=>{
     return(
       <View style={styles.penColorPickerContainer}>
@@ -67,7 +72,7 @@ function App() {
       </View>
       <Text style={styles.IconTitleText}>Redo</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={canvasRef.current?.save} style={styles.EditButton}>
+        <TouchableOpacity onPress={canvasRef.current?.toImage} style={styles.EditButton}>
           <View style={styles.EditIconView}>
       <Image
       style={styles.IconImage}
